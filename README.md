@@ -13,6 +13,21 @@ Ons doel is om een eLearning platform te maken:
 
 # Threat model
 *describe your threat model. One or more architectural diagram expected. Also a list of the principal threats and what you will do about them*
+
+-	Injecties: Veilige APIs gebruiken, whitelist server-side input validation (voor speciale karakters) en LIMIT gebruiken voor SQL.
+
+-	Vulnerable and Outdated Components: We gaan de bronnen van wat we gebruiken goed na checken en elke keer de stabielste en laatste versie proberen te gebruiken
+
+-	Broken access control : user account permissions controleren voordat ze aan data kunnen.
+
+-	Sercurity logging failures : encoded logging of all important user actions
+
+- Software and Data Integrity Failures: 
+
+- Cross site request forgery: 
+
+
+
 # Deployment
 *minimally, this section contains a public URL of the app. A description of how your software is deployed is a bonus. Do you do this manually, or did you manage to automate? Have you taken into account the security of your deployment process?*
 # *you may want further sections*
