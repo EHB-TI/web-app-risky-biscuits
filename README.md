@@ -26,7 +26,7 @@ Ons doel is om een eLearning platform te maken:
 
 - Cross site request forgery: 
 
-
+<img src="architecture_diagram.png"/>
 
 # Deployment
 *minimally, this section contains a public URL of the app. A description of how your software is deployed is a bonus. Do you do this manually, or did you manage to automate? Have you taken into account the security of your deployment process?*
