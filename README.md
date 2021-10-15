@@ -1,11 +1,15 @@
 # Goal
-*describe how this web app will (evantually) earn money or make the world a better place*
-eLearning platform:
- - People will be able to learn and make money at the same time by sharing knowledge. Our goal is to make profit on transaction when reaching a certain amount of users.
+Ons doel is om een eLearning platform te maken:
+ - Gebruikers zullen hun eigen lessen kunnen posten en andere lessen kunnen volgen. Een les kan in de vorm van een post enkel met tekst en afbeeldingen of ook met een video.
+ - Mensen die niet ingeschreven zijn kunnen de lessen zien maar kunnen daar niet op reageren en hun eigen lessen niet posten.
 
 # Acceptance criteria
-*how do we know that the goals have been reached?*
- - When users are able to post videos and texts about the subject they want to teach and that other users are able to learn by being able to see them. And when our web application is fully secured.
+how do we know that the goals have been reached?
+ - Vanaf het moment dat mensen kunnen leren door lessen te volgen van andere users, op lessen kunnen reageren en hun eigen lessen kunnen posten.
+Ons doel is om een eLearning platform te maken:
+ - Gebruikers zullen hun eigen lessen kunnen posten en andere lessen kunnen volgen. Een les kan in de vorm van een post enkel met tekst en afbeeldingen of ook met een video. Een les kan je ook in de vorm van een thread hebben, wat zeer handig is voor mensen die een bepaald onderwerp willen leren vanaf 0. 
+ - De reactie/comment functionaliteit zal de studenten de mogelijkheid geven om vragen te stellen en die vragen kunnen door elk gebruiker die een account heeft beantwoord worden.
+ - Mensen die niet ingeschreven zijn kunnen de lessen zien maar kunnen daar niet op reageren en hun eigen lessen niet posten.
 
 # Threat model
 *describe your threat model. One or more architectural diagram expected. Also a list of the principal threats and what you will do about them*
