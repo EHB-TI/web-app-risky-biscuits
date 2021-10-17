@@ -22,9 +22,9 @@ Ons doel is om een eLearning platform te maken:
 
 -	Sercurity logging failures : encoded logging of all important user actions
 
-- Software and Data Integrity Failures: 
+- Software and Data Integrity Failures: controleren of de software of gegevens afkomstig zijn van de verwachte bron en niet zijn gewijzigd.
 
-- Cross site request forgery: 
+- Cross site request forgery: Wanneer een gebruiker een geverifieerd verzoek indient door een formulier in te dienen, moet een willekeurig anti-CSRF-token in dat verzoek worden opgenomen. 
 
 <img src="architecture_diagram.png"/>
 
