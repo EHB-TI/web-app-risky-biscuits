@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Topic;
 use App\Models\Comment;
+use App\Models\Task;
 use App\Models\Post;
 use DateTime;
 use Illuminate\Http\Request;
@@ -42,12 +43,21 @@ class PostController extends Controller
             'author' => 'required|integer',
         ]);
 
-        Post::create([
+        $post = Post::create([
             'title' => $request->title,
             'message' => $request->message,
             'topic' => $request->topic,
             'author' => $request->author
         ]);
+
+        Task::create([
+            'post' => $post->id,
+            'question' => $request->question,
+            'answer1' => $request->answer1,
+            'answer2' => $request->answer2,
+            'answer3' => $request->answer3
+        ]);
+
         return redirect('/forum');
     }
 
@@ -59,7 +69,7 @@ class PostController extends Controller
      */
     public function show($postId)
     {
-        return view('post.post', ['post' => Post::find($postId), 'comments' => Comment::where('post',$postId)->get()]);
+        return view('post.post', ['post' => Post::find($postId), 'comments' => Comment::where('post',$postId)->get(), 'task' => Task::where('post',$postId)->first()]);
     }
 
     /**
