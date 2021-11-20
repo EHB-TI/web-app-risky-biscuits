@@ -14,7 +14,7 @@ class Post extends Model
         'title',
         'message',
         'dateOfPublication',
-        'category',
+        'topic',
         'author'
     ];
 
@@ -22,8 +22,8 @@ class Post extends Model
         return $this->belongsTo(User::class, 'author');
     }
 
-    public function category(){
-        return $this->belongsTo(Category::class, 'category');
+    public function topic(){
+        return $this->belongsTo(topic::class, 'topic');
     }
 
     public function comments(){

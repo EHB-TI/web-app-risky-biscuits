@@ -45,7 +45,7 @@ class PostController extends Controller
         Post::create([
             'title' => $request->title,
             'message' => $request->message,
-            'topic' => $request->category,
+            'topic' => $request->topic,
             'author' => $request->author
         ]);
         return redirect('/forum');

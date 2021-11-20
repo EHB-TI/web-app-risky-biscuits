@@ -20,6 +20,6 @@ class Topic extends Model
     ];
 
     public function Posts(){
-        return $this->hasMany('App\Models\Post', 'category');
+        return $this->hasMany('App\Models\Post', 'topic');
     }
 }
