@@ -35,6 +35,34 @@ use App\Models\User;
                         </div>
                     </div>
                     <p>{{ $post->message }}</p>
+                    
+                    <p id='Congrats' hidden='true' style="color:green;">Correct, Good Job :)</p>
+                    <p id='Ohno' hidden='true' style="color:red;">Wrong, Bad Job >:(</p>
+                    <p><b>{{ $task->question }}</b></p>
+                    <?php
+                        $first = '<input type="radio" id="Answer1" name="Answers" value="1"><label for="Answer1">' . $task->answer1 . '</label><br>';
+                        $second = '<input type="radio" id="Answer2" name="Answers" value="0"><label for="Answer2">' . $task->answer2 . '</label><br>';
+                        $third = '<input type="radio" id="Answer3" name="Answers" value="0"><label for="Answer3">' . $task->answer3 . '</label><br>';
+                        $rand = rand(1,3);
+                        switch($rand){
+                            case 1:
+                                echo $first;
+                                echo $second;
+                                echo $third;
+                                break;
+                            case 2:
+                                echo $second;
+                                echo $third;
+                                echo $first;
+                                break;
+                            case 3:
+                                echo $third;
+                                echo $first;
+                                echo $second;
+                                break;
+                            }
+                        ?>
+                        <button class=" my-4 ml-4 py-2 px-4 bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white border border-blue-500 hover:border-transparent rounded" id='submitBtn'>Submit</button>
                 </div>
             </div>
 
@@ -71,3 +99,26 @@ use App\Models\User;
         </div>
     </div>
 </x-app-layout>
+<script>
+window.onload = () => {
+    var submitBtn = document.getElementById('submitBtn');
+    submitBtn.addEventListener("click", Submit);
+}
+    function Submit(){
+        console.log('clicked');
+        var radioButtons = document.getElementsByName('Answers');
+        var congrats = document.getElementById('Congrats');
+        var ohno = document.getElementById('Ohno');
+
+        congrats.hidden = true;
+        ohno.hidden = true;
+        for (var btn of radioButtons){
+            if (btn.checked){
+                if (btn.value == 1)
+                    congrats.hidden = false;
+                else
+                    ohno.hidden = false;
+            }
+        }
+    }
+</script>
