@@ -19,6 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+
 route::get('/post/create', [PostController::class, 'create'])->middleware('auth')->name('post.create');
 Route::get('/forum', [PostController::class, 'index'])->name('forum');
 Route::get('/post/{postId}', [PostController::class, 'show'])->name('post.show');
@@ -31,3 +36,4 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 route::post('/comment', [CommentController::class, 'store'])->middleware('auth')->name('comment.store');
+
