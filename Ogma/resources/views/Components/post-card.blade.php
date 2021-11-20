@@ -9,8 +9,8 @@ use App\Models\User;
             <p class="text-m pb-3"> {{ substr($post->message, 0, 220) }} @if (strlen($post->message) > 220)...@endif </p>
             
             <div class="flex items-center">
-                <img class="w-10 h-10 rounded-full mr-4" src="{{ asset('images/profile/' . $post->Author->avatar) }}"
-                    alt="Avatar of Writer">
+                <!-- <img class="w-10 h-10 rounded-full mr-4" src="{{ asset('images/profile/' . $post->Author->avatar) }}"
+                    alt="Avatar of Writer"> -->
                 <div class="text-sm">
                     <p class="text-gray-900 leading-none">{{ $post->Author->name }}</p>
                     <p class="text-gray-600">{{ $post->dateOfPublication }}</p>
