@@ -18,6 +18,9 @@
                     <x-jet-nav-link :href="route('forum')" :active="request()->routeIs('forum')">
                         {{ __('Forum') }}
                     </x-jet-nav-link> 
+                    <x-jet-nav-link :href="route('Control')" :active="request()->routeIs('Control')">
+                        {{ __('Control') }}
+                    </x-jet-nav-link> 
                 </div>
             </div>
 

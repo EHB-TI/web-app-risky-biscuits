@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\TaskController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,4 +41,4 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 route::post('/comment', [CommentController::class, 'store'])->middleware('auth')->name('comment.store');
-
+Route::get('/Control', [TaskController::class], 'all')->middleware('auth', 'role:ROLE_ADMIN');

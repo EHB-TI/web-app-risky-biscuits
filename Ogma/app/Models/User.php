@@ -58,4 +58,34 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function roles()
+    {
+        return $this
+            ->belongsToMany('App\Models\Role')
+            ->withTimestamps();
+    }
+
+    public function getRoleNames()
+    {
+        return $this->roles()->get(['name']);
+    }
+
+    public function addRole($roleId)
+    {
+        $this->roles()->attach($roleId);
+    }
+
+    public function removeRole($roleId)
+    {
+        $this->roles()->detach($roleId);
+    }
+
+    public function hasRole($role)
+    {
+        if ($this->roles()->where('name', $role)->first()) {
+            return true;
+        }
+        return false;
+    }
 }
