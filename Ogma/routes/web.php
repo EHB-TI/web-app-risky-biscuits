@@ -28,17 +28,24 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 route::get('/post/create', [PostController::class, 'create'])->middleware('auth')->name('post.create');
 
-route::post("/post/store", [PostController::class,"store"])->name('post.store');
+route::post("/post/store", [PostController::class, "store"])->name('post.store');
 
 Route::get('/forum', [PostController::class, 'index'])->name('forum');
 Route::get('/post/{postId}', [PostController::class, 'show'])->name('post.show');
 
 Route::group(['middleware' => ['auth']], function () {
-    route::post("/post/update", [PostController::class,"update"])->name('post.update');
-    route::get("/post/{postId}/edit", [PostController::class,"edit"])->name('post.edit');
-    route::post("/post/destroy", [PostController::class,"destroy"])->name('post.destroy');
-    route::post("/comment/destroy", [CommentController::class,"destroy"])->name('comment.destroy');
+    route::post("/post/update", [PostController::class, "update"])->name('post.update');
+    route::get("/post/{postId}/edit", [PostController::class, "edit"])->name('post.edit');
+    route::post("/post/destroy", [PostController::class, "destroy"])->name('post.destroy');
+    route::post("/comment/destroy", [CommentController::class, "destroy"])->name('comment.destroy');
 });
 
 route::post('/comment', [CommentController::class, 'store'])->middleware('auth')->name('comment.store');
-Route::get('/Control', [TaskController::class], 'all')->middleware('auth', 'role:ROLE_ADMIN');
+
+
+Route::get('/control', [TaskController::class, 'index'])->middleware('auth')->name('control'); //->middleware('auth', 'role:ROLE_ADMIN');
+route::get('/control/createRole', [TaskController::class, 'createRole'])->middleware('auth')->name('control.createRole');
+route::post('/control/storeRole', [TaskController::class, 'storeRole'])->middleware('auth')->name('control.storeRole');
+route::post('/control/editRole/{roleId?}', [TaskController::class, 'editRole'])->middleware('auth')->name('control.editRole');
+route::put('/control/putRole/{roleId?}', [TaskController::class, 'putRole'])->middleware('auth')->name('control.putRole');
+route::delete('/control/destroyRole/{roleId?}', [TaskController::class, 'deleteRole'])->middleware('auth')->name('control.deleteRole');

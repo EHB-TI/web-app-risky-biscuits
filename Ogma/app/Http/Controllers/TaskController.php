@@ -3,84 +3,69 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Role;
 
 class TaskController extends Controller
 {
 
-    
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('control.index', ['topics' => Topic::all(), 'posts' => Post::all()]);
+        $roles = [];
+        $allRoles = Role::all();
+        foreach ($allRoles as $k => $v) {
+            $r = $allRoles[$k];
+            $role = new \stdClass();
+            $role->id = $r->id;
+            $role->name = $r->name;
+            $role->canDelete = Role::where('name', $r->name)->first()->users()->get()->count() > 0;
+            array_push($roles, $role);
+        }
+        return view('control.index', ['roles' => $roles]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function createRole()
     {
-        //
+        return view('control.createRole');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function storeRole(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string'
+        ]);
+
+        Role::create([
+            'name' => $request->name
+        ]);
+        return redirect('control');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function editRole($id)
     {
-        //
+        return view('control.editRole', ['roleId' => $id]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function putRole(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string'
+        ]);
+
+        $role = Role::find($id);
+
+        if (!isset($role)) {
+            $role = new Role();
+        }
+
+        $role->name = $request->input('name');
+        $role->save();
+
+        return redirect('control');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function deleteRole($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        Role::destroy($id);
+        return redirect('control');
     }
 }
