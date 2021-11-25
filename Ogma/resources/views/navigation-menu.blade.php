@@ -5,14 +5,14 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
-                    <a href="{{ route('forum') }}">
+                    <a href="{{ route('post.index') }}">
                         <x-logo class="block h-20 w-auto fill-current text-gray-600"/>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('forum') }}" :active="request()->routeIs('forum')">
+                    <x-jet-nav-link href="{{ route('post.index') }}" :active="request()->routeIs('post.index')">
                         {{ __('Forum') }}
                     </x-jet-nav-link>
                 </div>
@@ -98,7 +98,7 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link :href="route('forum')" :active="request()->routeIs('forum')">
+            <x-jet-responsive-nav-link :href="route('post.index')" :active="request()->routeIs('post.index')">
                 {{ __('Forum') }}
             </x-jet-responsive-nav-link>
         </div>
