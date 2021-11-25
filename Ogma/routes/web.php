@@ -22,8 +22,8 @@ route::get('/post/create', [PostController::class, 'create'])->middleware('auth'
 
 route::post("/post/store", [PostController::class, "store"])->name('post.store');
 
-Route::get('/forum', [PostController::class, 'index'])->name('forum');
-Route::get('/', [PostController::class, 'index'])->name('forum');
+//Route::get('/forum', [PostController::class, 'forum'])->name('forum');
+Route::get('/', [PostController::class, 'index'])->name('post.index');
 Route::get('/post/{postId}', [PostController::class, 'show'])->name('post.show');
 
 Route::group(['middleware' => ['auth']], function () {
