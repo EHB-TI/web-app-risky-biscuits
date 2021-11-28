@@ -34,7 +34,7 @@ use App\Models\User;
                         @endauth
                         </div>
                     </div>
-                    <p>{{ $post->message }}</p>
+                    <p>{!! $post->message !!}</p>
                     
                     <p id='Congrats' hidden='true' style="color:green;">Correct, Good Job :)</p>
                     <p id='Ohno' hidden='true' style="color:red;">Wrong, Bad Job >:(</p>

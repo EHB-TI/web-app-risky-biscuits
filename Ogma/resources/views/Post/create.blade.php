@@ -62,3 +62,6 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    CKEDITOR.replace('message'); 
+</script>
