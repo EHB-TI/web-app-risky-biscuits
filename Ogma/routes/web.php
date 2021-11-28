@@ -36,11 +36,12 @@ Route::group(['middleware' => ['auth']], function () {
 
 route::post('/comment', [CommentController::class, 'store'])->middleware('auth')->name('comment.store');
 
-//TODO Make this Admin Only
-route::post("/topic/post", [TopicController::class,"store"])->middleware('auth')->name('topic.post');
-route::post("/topic/destroy", [TopicController::class,"destroy"])->middleware('auth')->name('topic.destroy');
-
-Route::get('/control', [TaskController::class, 'index'])->middleware('auth')->name('control'); //->middleware('auth', 'role:ROLE_ADMIN');
+//Admin Only Routes
+Route::group(['middleware' => ['auth', 'role:ROLE_ADMIN']], function () {
+    route::post("/topic/post", [TopicController::class, "store"])->name('topic.post');
+    route::post("/topic/destroy", [TopicController::class, "destroy"])->name('topic.destroy');
+    Route::get('/control', [TaskController::class, 'index'])->name('control');
+});
 route::get('/control/createRole', [TaskController::class, 'createRole'])->middleware('auth')->name('control.createRole');
 route::post('/control/storeRole', [TaskController::class, 'storeRole'])->middleware('auth')->name('control.storeRole');
 route::post('/control/editRole/{roleId?}', [TaskController::class, 'editRole'])->middleware('auth')->name('control.editRole');
