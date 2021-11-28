@@ -11,6 +11,15 @@ class Label extends Component
      *
      * @return \Illuminate\View\View
      */
+
+    public $value;
+
+
+    public function __construct($value)
+    {
+        $this->value = $value;
+    }
+    
     public function render()
     {
         return view('Components.label');
