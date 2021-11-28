@@ -30,7 +30,7 @@ class Post extends Model
         return $this->hasMany(Comment::class, 'post');
     }
 
-    public function likes(){
-        return $this->belongsToMany(User::class, 'likes');
+    public function tasks(){
+        return $this->hasOne(Task::class, 'post');
     }
 }

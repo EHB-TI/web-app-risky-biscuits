@@ -27,16 +27,27 @@
                             <x-label for="message" :value="__('Post')" />
             
                             <textarea class="block mt-1 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" id="message" name="message" rows="4"></textarea>
+                        </div>                       
+
+                        <!-- Task -->
+                        <div>
+                            <x-label for="quesion" :value="__('Multiple Choice Question')" />
+                            <x-input type="text" id="question" name="question" /><br>
+                            <x-label for="answer1" :value="__('Answer 1 (this will be the correct answer): ') " />
+                            <x-input type="text" id="answer1" name="answer1" /><br>
+                            <x-label for="answer2" :value="__('Answer 2: ')" />
+                            <x-input type="text" id="answer2" name="answer2" /><br>
+                            <x-label for="answer3" :value="__('Answer 3: ')" />
+                            <x-input type="text" id="answer3" name="answer3" /><br>
                         </div>
                         
-
                         <!-- topic -->
                         <select class="block mt-4 w-full rounded-md shadow-sm border-gray-300" name="topic">
                             <option value="">{{ __('topic') }}</option>
                             @foreach($topics as $topic)
                                 <option value="{{ $topic->id }}" @if($topic->id == old('topic')) selected @endif>{{ $topic->name }}</option>
                             @endforeach
-                        </select>                        
+                        </select> 
 
                         <input id="author" value="{{ Auth::user()->id }}" type="hidden" name="author" required />
 
