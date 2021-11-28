@@ -52,6 +52,9 @@
                     </tbody>
                 </table>
             </div>
+
+            <x-topic-editor :topics="$topics" />
+
         </div>
     </div>
     @endif
