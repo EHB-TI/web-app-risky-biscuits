@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\TopicController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,6 +36,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 route::post('/comment', [CommentController::class, 'store'])->middleware('auth')->name('comment.store');
 
+//TODO Make this Admin Only
+route::post("/topic/post", [TopicController::class,"store"])->middleware('auth')->name('topic.post');
+route::post("/topic/destroy", [TopicController::class,"destroy"])->middleware('auth')->name('topic.destroy');
 
 Route::get('/control', [TaskController::class, 'index'])->middleware('auth')->name('control'); //->middleware('auth', 'role:ROLE_ADMIN');
 route::get('/control/createRole', [TaskController::class, 'createRole'])->middleware('auth')->name('control.createRole');
