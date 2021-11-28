@@ -58,7 +58,7 @@ class PostController extends Controller
             'answer3' => $request->answer3
         ]);
 
-        return redirect('/forum');
+        return redirect('/');
     }
 
     /**
@@ -119,6 +119,6 @@ class PostController extends Controller
     public function destroy(Request $request)
     {
         Post::find($request->id)->delete();
-        return redirect()->route('forum');
+        return redirect()->route('post.index');
     }
 }
