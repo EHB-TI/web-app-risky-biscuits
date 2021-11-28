@@ -62,3 +62,8 @@
         </div>
     </div>
 </x-app-layout>
+<script>
+    CKEDITOR.replace('message', {
+        removePlugins: 'sourcearea'
+    });  
+</script>
