@@ -20,7 +20,7 @@ class TaskController extends Controller
             $role->canDelete = Role::where('name', $r->name)->first()->users()->get()->count() > 0;
             array_push($roles, $role);
         }
-        return view('control.index', ['roles' => $roles]);
+        return view('control', ['roles' => $roles]);
     }
 
     public function createRole()
