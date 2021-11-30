@@ -63,7 +63,13 @@
     </div>
 </x-app-layout>
 <script>
-    CKEDITOR.replace('message', {
-        removePlugins: 'sourcearea'
-    });  
+    ClassicEditor
+        .create( document.getElementById( 'message' ), {
+            mediaEmbed: {
+                previewsInData: true
+            }
+        } )
+        .catch( error => {
+            console.error( error );
+        } );  
 </script>
