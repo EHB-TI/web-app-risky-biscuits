@@ -58,6 +58,7 @@
     </div>
 </x-app-layout>
 <script>
+
     ClassicEditor
         .create( document.getElementById( 'message' ), {
             mediaEmbed: {
@@ -67,4 +68,5 @@
         .catch( error => {
             console.error( error );
         } );  
+
 </script>

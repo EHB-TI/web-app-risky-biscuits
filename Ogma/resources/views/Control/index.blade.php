@@ -53,7 +53,14 @@
                 </table>
             </div>
 
+
+            <div style="width: 100%; margin-top: 10px;"></div>
+
             <x-topic-editor :topics="$topics" />
+
+            <div style="width: 100%; margin-top: 10px;"></div>
+
+            <x-user-editor :users="$users" />
 
         </div>
     </div>
