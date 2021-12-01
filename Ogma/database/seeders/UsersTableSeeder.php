@@ -20,8 +20,6 @@ class UsersTableSeeder extends Seeder
         // Default user
         $defaultUser = $this->creatDefaultUser();
         $defaultUser->addRole(Role::where("name", "ROLE_ADMIN")->first()->id);
-
-        User::factory()->count(15)->create();
     }
 
     private function creatDefaultUser()
