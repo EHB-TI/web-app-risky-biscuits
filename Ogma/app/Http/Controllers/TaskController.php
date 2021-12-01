@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Role;
 use App\Models\Topic;
+
 use App\Models\User;
+
 
 class TaskController extends Controller
 {
@@ -22,7 +24,9 @@ class TaskController extends Controller
             $role->canDelete = Role::where('name', $r->name)->first()->users()->get()->count() > 0;
             array_push($roles, $role);
         }
+
         return view('Control.index', ['roles' => $roles, 'topics' => Topic::all(), 'users' => User::all()]);
+
     }
 
     public function createRole()

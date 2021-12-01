@@ -58,5 +58,7 @@ Het doel van ons project is om kennis te delen door deze te verspreiden via de w
 
 # Deployment
 *minimally, this section contains a public URL of the app. A description of how your software is deployed is a bonus. Do you do this manually, or did you manage to automate? Have you taken into account the security of your deployment process?*
+Public URL: https://ogma-jaqat.ondigitalocean.app/
+
 # *you may want further sections*
 *especially if the use of your application is not self-evident*

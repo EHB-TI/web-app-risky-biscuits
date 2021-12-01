@@ -16,7 +16,9 @@
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
+        <script src="{{ asset('ckeditor/build/ckeditor.js') }}"></script>
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />

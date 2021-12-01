@@ -7,6 +7,7 @@ use Illuminate\View\Component;
 class AuthValidationErrors extends Component
 {
     /**
+
      * The Errors.
      *
      * @var Errors[]
@@ -24,6 +25,7 @@ class AuthValidationErrors extends Component
     }
 
     /**
+
      * Get the view / contents that represents the component.
      *
      * @return \Illuminate\View\View
