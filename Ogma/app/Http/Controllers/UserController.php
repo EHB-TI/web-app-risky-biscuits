@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class UserController extends Controller
 {
@@ -20,7 +21,10 @@ class UserController extends Controller
         $request->validateWithBag('userStoreErrors', [
             'name' => 'required|string',
             'email' => 'required|string|email',
-            'password' => 'required|string|min:8',
+            'password' => [
+                'required',
+                'string',
+                Password::min(8)->symbols()->uncompromised(300)]
         ]);
 
         User::create([
