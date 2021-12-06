@@ -25,17 +25,28 @@ use App\Models\User;
                         @auth
                         @if (Auth::user()->id == $post->author)
                             <form method="GET" action="{{ route('post.edit', $post) }}">
-                                <button type="submit"   
+                                <button type="submit"
                                     class=" my-4 ml-4 py-2 px-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white border border-green-500 hover:border-transparent rounded">
                                     {{ __('Edit') }}
                                 </button>
                             </form>
+                        @else
+                            <form method="POST" action="{{ route('subscription.store', $post) }}">
+                                @csrf
+                                <input type="hidden" name="post" value="{{ $post->id}}" />
+                                <input type="hidden" name="subscriber" value="{{ Auth::user()->id}}" />
+                                <button type="submit"
+                                        class=" my-4 ml-4 py-2 px-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white border border-green-500 hover:border-transparent rounded">
+                                    {{ __('Subscribe') }}
+                                </button>
+                            </form>
                         @endif
                         @endauth
+
                         </div>
                     </div>
                     <p>{!! $post->message !!}</p>
-                    
+
                     <p id='Congrats' hidden='true' style="color:green;">Correct, Good Job :)</p>
                     <p id='Ohno' hidden='true' style="color:red;">Wrong, Bad Job >:(</p>
                     <p><b>{{ $task->question }}</b></p>
