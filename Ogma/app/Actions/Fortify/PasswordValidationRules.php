@@ -14,6 +14,6 @@ trait PasswordValidationRules
     protected function passwordRules()
     {
         $password = (new Password)->length(8)->requireUppercase()->requireSpecialCharacter()->requireNumeric();
-        return ['required', 'string', $password , 'confirmed'];
+        return ['required', 'string', $password , 'confirmed', \Illuminate\Validation\Rules\Password::min(8)->uncompromised(300)];
     }
 }
