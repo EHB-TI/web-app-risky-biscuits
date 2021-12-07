@@ -24,11 +24,7 @@ class SubscriptionController extends Controller
 
     public function destroy(Request $request)
     {
-        $request->validate([
-            'id' => 'required|integer'
-        ]);
-
-        Subscription::find($request->id)->delete();
+        Subscription::where('post', $request->post)->where('subscriber', $request->subscriber)->delete();
 
         return redirect()->back();
     }

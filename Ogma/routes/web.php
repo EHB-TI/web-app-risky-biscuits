@@ -57,5 +57,6 @@ Route::group(['middleware' => ['auth', 'role:ROLE_ADMIN']], function () {
     Route::get('/control', [TaskController::class, 'index'])->name('control');
 });
 
-route::post('/subscription', [SubscriptionController::class, 'store'])->middleware('auth')->name('subscription.store');
+route::post('/subscription/post', [SubscriptionController::class, 'store'])->middleware('auth')->name('subscription.store');
+route::post('/subscription/destroy', [SubscriptionController::class, 'destroy'])->middleware('auth')->name('subscription.destroy');
 

@@ -30,14 +30,21 @@ use App\Models\User;
                                     {{ __('Edit') }}
                                 </button>
                             </form>
-                        @else
-                            <form method="POST" action="{{ route('subscription.store', $post) }}">
+                        @elseif(is_null(App\Models\Subscription::where('post', $post->id)->where('subscriber', Auth::user()->id)->first()))
+                            <form method="POST" action="{{ route('subscription.store', ['post' => $post->id, 'subscriber' => Auth::user()->id]) }}">
                                 @csrf
-                                <input type="hidden" name="post" value="{{ $post->id}}" />
-                                <input type="hidden" name="subscriber" value="{{ Auth::user()->id}}" />
                                 <button type="submit"
                                         class=" my-4 ml-4 py-2 px-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white border border-green-500 hover:border-transparent rounded">
                                     {{ __('Subscribe') }}
+                                </button>
+                            </form>
+                        @else
+                            <form method="POST" action="{{ route('subscription.destroy', ['post' => $post->id, 'subscriber' => Auth::user()->id]) }}">
+                                @csrf
+                                <button type="submit"
+                                        style="background-color:rgb(200,0,0);color:white;"
+                                        class=" my-4 ml-4 py-2 px-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white border border-green-500 hover:border-transparent rounded">
+                                    {{ __('Unsubscribe') }}
                                 </button>
                             </form>
                         @endif
