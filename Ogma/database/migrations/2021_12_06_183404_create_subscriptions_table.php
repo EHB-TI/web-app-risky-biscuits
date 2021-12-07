@@ -18,6 +18,7 @@ class CreateSubscriptionsTable extends Migration
             $table->timestamps();
             $table->unsignedBigInteger('post');
             $table->unsignedBigInteger('subscriber');
+            $table->string('email');
 
             $table->foreign('subscriber')
                 ->references('id')->on('users')

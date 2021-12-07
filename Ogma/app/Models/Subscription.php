@@ -11,7 +11,8 @@ class Subscription extends Model
     protected $fillable = [
         'id',
         'post',
-        'subscriber'
+        'subscriber',
+        'email'
     ];
 
     public function post()

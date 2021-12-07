@@ -12,11 +12,13 @@ class SubscriptionController extends Controller
         $request->validate([
             'subscriber' => 'required|integer',
             'post' => 'required|integer',
+            'email' => 'required|string|email',
         ]);
 
         Subscription::create([
             'subscriber' => $request->subscriber,
             'post' => $request->post,
+            'email' => $request->email,
         ]);
 
         return redirect()->back();

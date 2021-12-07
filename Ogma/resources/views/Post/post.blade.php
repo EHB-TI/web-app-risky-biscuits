@@ -31,7 +31,7 @@ use App\Models\User;
                                 </button>
                             </form>
                         @elseif(is_null(App\Models\Subscription::where('post', $post->id)->where('subscriber', Auth::user()->id)->first()))
-                            <form method="POST" action="{{ route('subscription.store', ['post' => $post->id, 'subscriber' => Auth::user()->id]) }}">
+                            <form method="POST" action="{{ route('subscription.store', ['post' => $post->id, 'subscriber' => Auth::user()->id, 'email' => Auth::user()->email] ) }}">
                                 @csrf
                                 <button type="submit"
                                         class=" my-4 ml-4 py-2 px-4 bg-transparent hover:bg-green-500 text-green-700 font-semibold hover:text-white border border-green-500 hover:border-transparent rounded">
