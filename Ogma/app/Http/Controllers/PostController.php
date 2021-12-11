@@ -7,11 +7,11 @@ use App\Models\Topic;
 use App\Models\Comment;
 use App\Models\Task;
 use App\Models\Post;
+use App\Notifications\PostUpdate;
 use DateTime;
 use Illuminate\Http\Request;
-use Illuminate\Mail\Mailable;
-use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notification;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Mail\Mailer;
 
 class PostController extends Controller
 {
@@ -112,14 +112,13 @@ class PostController extends Controller
         $post->save();
 
         foreach (Subscription::where('post',$post->id)->get() as $Subs){
-            Notification::route('mail', $Subs->email)->notify((new MailMessage)
-                ->subject('Order Status')
-                ->from('sender@example.com', 'Sender')
-                ->greeting('Hello!')
-                ->line('Your order status has been updated')
-                ->action('Check it out', url('/'))
-                ->line('Best regards!'));
-// mail($Subs->email, 'Subscribed', 'Thanks for subbing :)');
+            $email = $Subs->email;
+            $data = ['post' => $post];
+            Mail::send('subscribe.mail', $data, function($m) use ($email) {
+                $m->to($email);
+                $m->from('updateBot@ogma.ga', 'Ogma'); 
+                $m->subject('Post Update');
+            });
         }
 
         return redirect()->route('post.show', ['postId' => $post->id]);
