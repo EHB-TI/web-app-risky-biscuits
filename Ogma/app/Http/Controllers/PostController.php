@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Subscription;
 use App\Models\Topic;
 use App\Models\Comment;
 use App\Models\Task;
 use App\Models\Post;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Mailable;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Notifications\Notification;
 
 class PostController extends Controller
 {
@@ -106,6 +110,17 @@ class PostController extends Controller
         $post->message = $request->message;
 
         $post->save();
+
+        foreach (Subscription::where('post',$post->id)->get() as $Subs){
+            Notification::route('mail', $Subs->email)->notify((new MailMessage)
+                ->subject('Order Status')
+                ->from('sender@example.com', 'Sender')
+                ->greeting('Hello!')
+                ->line('Your order status has been updated')
+                ->action('Check it out', url('/'))
+                ->line('Best regards!'));
+// mail($Subs->email, 'Subscribed', 'Thanks for subbing :)');
+        }
 
         return redirect()->route('post.show', ['postId' => $post->id]);
     }
