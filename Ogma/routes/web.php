@@ -7,6 +7,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SubscriptionController;
 
 
 /*
@@ -55,3 +56,7 @@ Route::group(['middleware' => ['auth', 'role:ROLE_ADMIN']], function () {
     route::post("/user/destroy", [UserController::class, "destroy"])->name('user.destroy');
     Route::get('/control', [TaskController::class, 'index'])->name('control');
 });
+
+route::post('/subscription/post', [SubscriptionController::class, 'store'])->middleware('auth')->name('subscription.store');
+route::post('/subscription/destroy', [SubscriptionController::class, 'destroy'])->middleware('auth')->name('subscription.destroy');
+
