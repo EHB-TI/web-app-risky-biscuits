@@ -96,7 +96,7 @@ use App\Models\User;
 
             @foreach($post->comments as $comment)
 
-            <x-comment :comment="$comment" />
+            <x-comment-card :comment="$comment" />
 
             @endforeach
             @auth
