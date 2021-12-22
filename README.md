@@ -8,7 +8,8 @@ Het doel van ons project is om kennis te delen door deze te verspreiden via de w
 # Acceptance criteria
 
  - Gebruikers zullen hun eigen lessen kunnen posten en andere lessen kunnen volgen. Een les kan in de vorm van een post enkel met tekst en afbeeldingen of ook met een video. Een les kan je ook in de vorm van een thread hebben, wat zeer handig is voor mensen die een bepaald onderwerp willen leren vanaf 0. 
- - De reactie/comment functionaliteit zal de studenten de mogelijkheid geven om vragen te stellen en die vragen kunnen door elk gebruiker die een account heeft beantwoord worden.
+ - ~~De reactie/comment functionaliteit zal de studenten de mogelijkheid geven om vragen te stellen en die vragen kunnen door elk gebruiker die een account heeft beantwoord worden.~~ EDIT: Op een les kan je mensen taggen in een comment om een vraag te stellen.
+ -
  - Mensen die niet ingeschreven zijn kunnen de lessen zien maar kunnen daar niet op reageren en hun eigen lessen niet posten.
  - gebruikers kunnen aan het einde van een les een quiz invullen
 
@@ -17,13 +18,14 @@ Het doel van ons project is om kennis te delen door deze te verspreiden via de w
                                         een les aanmaken
                                         een les bewerken
                                         een les verwijderen
-                                        een comment aanmaken, bewerken & verwijderen
+                                        een comment aanmaken, ~~bewerken~~ & verwijderen
                                         een score geven aan een les
 
 - een niet geregistreerde gebruiker kan: een les lezen maar niks posten op de website
 
 - een administrator kan: lessen van alle gebruikers verwijderen 
-                            gebruiker accounts verwijderen
+                         gebruiker accounts verwijderen
+                        
 
 
 
