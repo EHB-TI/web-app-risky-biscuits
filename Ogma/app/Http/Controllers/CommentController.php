@@ -40,10 +40,14 @@ class CommentController extends Controller
    public function destroy(Request $request)
    {
        $request->validate([
-           'id' => 'required|integer'
+           'id' => 'required|integer',
+           'userId' =>'required|integer'
        ]);
 
-       Comment::find($request->id)->delete();
+       $comment = Comment::find($request->id);
+         if($comment->author == $request->userId){
+              $comment->delete();
+         }
 
        return redirect()->back();
    }
