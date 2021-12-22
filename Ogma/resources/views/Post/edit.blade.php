@@ -6,7 +6,8 @@
             </h2>
             <form action="{{ route('post.destroy', ['postId' => $post->id]) }}" method="post">
                 @csrf
-                <input type="hidden" name="id" value="{{ $post->id}}" />
+                <input type="hidden" name="postId" value="{{ $post->id}}" />
+                <input type="hidden" name="userId" value="{{ Auth::user()->id}}" />
                 <button
                     class="ml-4  py-2 px-4 bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white border border-red-500 hover:border-transparent rounded">
                     {{ __('Delete') }}

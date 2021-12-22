@@ -7,12 +7,13 @@ use App\Models\Topic;
 use App\Models\Comment;
 use App\Models\Task;
 use App\Models\Post;
+use App\Models\User;
 use App\Notifications\PostUpdate;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Mail\Mailer;
-
+use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     /**
@@ -132,7 +133,13 @@ class PostController extends Controller
      */
     public function destroy(Request $request)
     {
-        Post::find($request->id)->delete();
+        $post = Post::find($request->postId);
+        $user = User::find($request->userId);
+
+        if ($user->hasRole('ROLE_ADMIN')||$post->author == $user->id) {
+            $post->delete();
+        }
+       
         return redirect()->route('post.index');
     }
 }
