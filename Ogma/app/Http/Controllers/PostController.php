@@ -85,7 +85,7 @@ class PostController extends Controller
      */
     public function edit($postId)
     {
-        return view('post.edit', ['post' => Post::find($postId)]);
+        return view('post.edit', ['post' => Post::find($postId), 'task' => Task::where('post',$postId)->first()]);
     }
 
     /**
@@ -112,12 +112,21 @@ class PostController extends Controller
 
         $post->save();
 
+        $task = Task::where('post',$request->id)->first();
+        if ($task == null) return abort(404);
+
+        $task->question = $request->question;
+        $task->answer1 = $request->answer1;
+        $task->answer2 = $request->answer2;
+        $task->answer3 = $request->answer3;
+
+        $task->save();
+
         foreach (Subscription::where('post',$post->id)->get() as $Subs){
             $email = $Subs->email;
             $data = ['post' => $post];
             Mail::send('subscribe.mail', $data, function($m) use ($email) {
                 $m->to($email);
-                $m->from('updateBot@ogma.ga', 'Ogma'); 
                 $m->subject('Post Update');
             });
         }
