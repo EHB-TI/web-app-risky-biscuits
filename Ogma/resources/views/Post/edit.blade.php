@@ -45,6 +45,18 @@
 
                         <input type="hidden" name="author" value="{{ $post->author }}" />
 
+                        <!-- Task -->
+                        <div>
+                            <x-label for="quesion" :value="__('Multiple Choice Question')" />
+                            <x-input type="text" id="question" name="question" value="{{ $task->question }}"/><br>
+                            <x-label for="answer1" :value="__('Answer 1 (this will be the correct answer): ') " />
+                            <x-input type="text" id="answer1" name="answer1" value="{{ $task->answer1 }}" /><br>
+                            <x-label for="answer2" :value="__('Answer 2: ')" />
+                            <x-input type="text" id="answer2" name="answer2" value="{{ $task->answer2 }}"/><br>
+                            <x-label for="answer3" :value="__('Answer 3: ')" />
+                            <x-input type="text" id="answer3" name="answer3" value="{{ $task->answer3 }}"/><br>
+                        </div>
+
                         <div class="flex items-center justify-end mt-4">
                             <input type="hidden" value="{{ $post->id }}" name="id">
                             <button
